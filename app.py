@@ -4,7 +4,7 @@ from pytube import YouTube #pip install pytube https://pypi.org/project/pytube/
 from pathlib import Path #pip install pathlib https://pypi.org/project/pathlib/
 import os
 import re
-import requests#, json
+import requests, json
 
 app = Flask(__name__)
 
@@ -38,11 +38,11 @@ def downloadVideo():
             }
 
             payload = {'q': youtubeUrl, 'vt': 'home'}   
-            # response = requests.post(url, data=payload, headers=headers)
+            response = requests.post(url, data=payload, headers=headers)
 
-            # json_response_obj = json.loads(response.text)
+            json_response_obj = json.loads(response.text)
             #print(json_response_obj)
-            return payload #json_response_obj
+            return json_response_obj
 
 
             
