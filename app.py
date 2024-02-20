@@ -7,7 +7,7 @@ import re
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET","POST"])
+@app.route("/download", methods=["GET","POST"])
 def downloadVideo():
     mesage = ''
     errorType = 0
