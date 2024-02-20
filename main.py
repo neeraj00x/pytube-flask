@@ -7,7 +7,7 @@ import re
 
 app = Flask(__name__)
 
-@app.route("/download", methods=["GET","POST"])
+@app.route("/", methods=["GET","POST"])
 def downloadVideo():
     mesage = ''
     errorType = 0
@@ -35,4 +35,4 @@ def downloadVideo():
     return render_template('youtube.html', mesage = mesage, errorType = errorType) 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port='8000')
