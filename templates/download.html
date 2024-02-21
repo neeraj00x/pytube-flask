@@ -20,14 +20,11 @@
                 <form action="/download" method="post" style=" padding: 0.1em 1em;">
                     <div class="mb-3 mt-3" style="width: 15em;">
                         <p>{{title}}</p>
-                        <label for="dropdown">Select an option:</label>
-                        <select id="dropdown" name="dropdown" class="form-select" aria-label="Default select example">
-                            {% for mesage in mesages %}
-                            <option value="{{ res_keys[loop.index-1] }}">{{ mesage }}</option>
-                            {% endfor %}
-                        </select>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-success">Generate Link</button>
+                    <a class="btn btn-primary btn-success" href="{{link}}" target="_blank" role="button"
+                        style="margin: 0px 2px;">Download {{'Video' if ftype == 'mp4' else 'Audio'}}</a>
+                    <a class="btn btn-primary btn-warning" href="/" role="button" style="margin: 0px 2px;">Convert
+                        Next</a>
                 </form>
             </div>
         </div>
