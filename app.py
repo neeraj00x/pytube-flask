@@ -4,18 +4,6 @@ import requests, json
 
 app = Flask(__name__)
 
-resolution_mapping = {
-        "auto": "auto",
-        "137": "1080p",
-        "22": "720p",
-        "135": "480p",
-        "18": "360p",
-        "133": "240p",
-        "160": "144p",
-        "mp3128" : "mp3"
-    }
-
-
 def ext_video_id(video_url):
     fo = "https://youtu.be/"
     foo = "https://youtube.com/watch?v="
@@ -28,7 +16,7 @@ def ext_video_id(video_url):
     elif bar in video_url:     video_id = video_url.replace(bar, '')
     elif short in video_url:   video_id = video_url.replace(short, '')
     elif sshort in video_url:  video_id = video_url.replace(sshort, '')
-    else:                      video_id = video_url
+    else:                      video_id = ''
 
     return video_id
 
@@ -40,7 +28,8 @@ def index():
     if request.method == 'POST' and 'video_url' in request.form:
         global youtubeUrl
         youtubeUrl = request.form["video_url"]
-        if(youtubeUrl):
+        video_id = ext_video_id(youtubeUrl)
+        if(video_id):
 
             url = "https://yt1s.com/api/ajaxSearch/index"
             headers = {
@@ -61,7 +50,7 @@ def index():
             video_id = ext_video_id(youtubeUrl)
             return render_template('youtube.html', mesages = media_res, res_keys = res_keys, title = json_response_obj["title"], id= video_id)
         else:
-            mesage = 'No URL Error!'
+            mesage = 'URL Error!'
             errorType = 0
     return render_template('index.html', mesage = mesage, errorType = errorType) 
 
