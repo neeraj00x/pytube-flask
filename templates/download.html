@@ -1,34 +1,70 @@
-<html>
-<!-- Neeraj Pratap Singh neeraj00x -->
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <Title>Python Flask YouTube video Downloader</Title>
+    <title>YouTube Video Downloader</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 80%;
+        }
+
+        .download-container {
+            background-color: lightgray;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .img-container {
+            width: 100%;
+            max-width: 300px;
+            /* Adjust as needed */
+            margin: auto;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+            }
+
+            .img-container {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container mt-3" style=" width: 50%;background-color: lightgray; padding: 10px; border-radius: 5px;">
-        <h2 style="text-align: center;">Python Flask YouTube Downloader</h2>
+    <div class="container mt-3">
+        <h2 class="text-center">YouTube Video Downloader</h2>
         <div class="row">
-            <div class="col-md-3" style="width: 50%;">
-                <img src="https://i.ytimg.com/vi/{{id}}/0.jpg" alt="Image" class="img-fluid"
-                    style="max-height: 75%; padding: 1.5em 1em; float: right;">
+            <div class="col-md-12 mb-3">
+                <div class="img-container">
+                    <img src="https://i.ytimg.com/vi/{{id}}/0.jpg" alt="Image" class="img-fluid">
+                </div>
             </div>
-            <div class="col-md-9" style="width: 50%;">
-                <form action="/download" method="post" style=" padding: 0.1em 1em;">
-                    <div class="mb-3 mt-3" style="width: 15em;">
+            <div class="col-md-12">
+                <form action="/download" method="post" class="download-container">
+                    <div class="mb-3 mt-3">
                         <p>{{title}}</p>
                     </div>
-                    <a class="btn btn-primary btn-success" href="{{link}}" target="_blank" role="button"
-                        style="margin: 0px 2px;">Download {{'Video' if ftype == 'mp4' else 'Audio'}}</a>
-                    <a class="btn btn-primary btn-warning" href="/" role="button" style="margin: 0px 2px;">Convert
-                        Next</a>
+                    <a class="btn btn-primary btn-success" href="{{link}}" target="_blank" role="button">Download
+                        {{'Video' if ftype == 'mp4' else 'Audio'}}</a>
+                    <a class="btn btn-primary btn-warning" href="/" role="button">Convert Next</a>
                 </form>
             </div>
         </div>
-        <br><br>
+    </div>
+    <br><br>
 </body>
 
 </html>
